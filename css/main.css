@@ -183,6 +183,8 @@ header > h1 {
     font-size: 100%;
     text-align: left;
     margin-top: 0%;
+    word-wrap: break-word;
+    /* overflow-y: scroll; */
 }
 .QstnInfo {
     text-align: center;
