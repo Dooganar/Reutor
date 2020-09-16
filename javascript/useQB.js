@@ -92,10 +92,16 @@ updateTopicDiv = function(){
         })
         questionForm.addEventListener('submit', function(e){
             e.preventDefault()
+
             questionList = []
             while(questionZone.hasChildNodes()){
                 questionZone.removeChild(questionZone.firstChild)
             }
+
+            loadingMessage = document.createElement("h2")
+            loadingMessage.innerHTML = "Loading..."
+            questionZone.appendChild(loadingMessage)
+            console.log("loadingMessageCompletes")
         
             database.ref('questions/'+questionForm['subject'].value+'/'+questionForm['unit'].value).once("value", function(snapshot){
                 questionList = []

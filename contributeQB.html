@@ -3,7 +3,8 @@
 <html>
     <head>
         <title>Reutor</title>
-        <link href="./css/main.css" type="text/css" rel="stylesheet"></link>
+        <link href="./css/main.css" type="text/css" rel="stylesheet"></link> <!-- GLobal Reutor Stylesheet -->
+        <link href="./lcanvas/literallycanvas.css" rel="stylesheet"><!-- "Literally Canvas" Stylesheet -->
     </head>
     <header>
         <span class="LISU"><p id="welcomeMessage"></p><p id="signup_button" class="navButton">LOGIN/SIGNUP</p></span>
@@ -64,13 +65,15 @@
                 <label for="contributer">Contributer: </label>
                 <input name="contributer"placeholder="YOUR NAME" required><br>
 
-                <label for="questionInput">Write your question here (or <input id="createSvgButt" type="button" value="Draw Question (SVG)"></input>)</label>
-                <span id="svgMenuQ">| <a href="https://sketch.io/sketchpad/" target="_black">Create</a> | Open: <input id="svgFileInput" type="file"></span>
+                <label for="questionInput">Write and/or <input id="createSvgButt" type="button" value="draw"></input> your question here:</label>
+                <!-- OLD SVG SYSTEM: <span id="svgMenuQ">| <a href="https://sketch.io/sketchpad/" target="_black">Create</a> | Open: <input id="svgFileInput" type="file"></span> -->
                 <textarea required name="questionInput" placeholder="QUESTION"></textarea><br>
+                <!-- <div id="questionCanvas"></div> -->
 
-                <label for="answerInput">Write your answer here, incuding working out if possible (if answer not known, leave blank) <input id="createSvgButtA" type="button" value="Draw Question (SVG)"></input>:</label><br>
-                <span id="svgMenuA">| <a href="https://sketch.io/sketchpad/" target="_black">Create</a> | Open: <input id="svgFileInputA" type="file"></span>
+                <label id="answerLabel"for="answerInput">Write and/or <input id="createSvgButtA" type="button" value="draw"></input> your answer here, incuding working out if possible (if answer not known, leave blank):</label><br>
+                <!-- OLD SVG SYSTEM: <span id="svgMenuA">| <a href="https://sketch.io/sketchpad/" target="_black">Create</a> | Open: <input id="svgFileInputA" type="file"></span> -->
                 <textarea id="answerInput"placeholder="ANSWER"></textarea><br>
+                <!-- <div id="answerCanvas"></div> -->
                 
                 <!-- <label for="workingOutInput">Write your working out here (or leave blank):</label><br>
                 <textarea id="workingOutInput"placeholder="WORKING OUT"></textarea><br> -->
@@ -106,6 +109,10 @@
 
 
         <!-- -----------------------JAVASCRIPT------------------------- -->
+
+        <!-- "Literally canvas" javascript -->
+        <script src="./lcanvas/react-0.14.3.js"></script>
+        <script src="./lcanvas/literallycanvas.js"></script>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
 

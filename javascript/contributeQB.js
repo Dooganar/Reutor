@@ -1,44 +1,69 @@
 contributeForm = document.querySelector("#newQstnForm")
 
-fileReader = new FileReader();
 
 
+//------------------------------------------DRAWING FUNCTIONALITY 2.0----------------------------------------------
+var lcQ, lcA
 $("createSvgButt").addEventListener("click", function(event){
-  if(event.target.value == "Draw Question (SVG)"){
-    event.target.value = "Type Question"
-    $("svgMenuQ").style.display = "inline"
+  if(event.target.value == "draw"){
+    event.target.value = "-draw-"
+    if($("questionCanvas")==undefined){
+      qCanvas = document.createElement("div")
+      qCanvas.id = "questionCanvas"
+      contributeForm["questionInput"].insertAdjacentElement("afterend", qCanvas)
+      lcQ = LC.init(document.getElementById("questionCanvas"), {
+        imageURLPrefix: './lcanvas/lc-images',
+        toolbarPosition: 'bottom',
+        defaultStrokeWidth: 2,
+        strokeWidths: [1, 2, 3, 5, 30]
+      });
+    }else{ 
+      $("questionCanvas").style.display = "inline"
+    }
   }else{
-    event.target.value = "Draw Question (SVG)"
-    $("svgMenuQ").style.display = "none"
+    event.target.value = "draw"
+    $("questionCanvas").style.display = "none"
   }
-  
 })
-
 $("createSvgButtA").addEventListener("click", function(event){
-  if(event.target.value == "Draw Question (SVG)"){
-    event.target.value = "Type Question"
-    $("svgMenuA").style.display = "inline"
+  if(event.target.value == "draw"){
+    event.target.value = "-draw-"
+    if($("answerCanvas")==undefined){
+      aCanvas = document.createElement("div")
+      aCanvas.id = "answerCanvas"
+      contributeForm["answerInput"].insertAdjacentElement("afterend", aCanvas)
+      lcA = LC.init(document.getElementById("answerCanvas"), {
+        imageURLPrefix: './lcanvas/lc-images',
+        toolbarPosition: 'bottom',
+        defaultStrokeWidth: 2,
+        strokeWidths: [1, 2, 3, 5, 30]
+      });
+    }else{
+      $("answerCanvas").style.display = "inline"
+    }
+    
   }else{
-    event.target.value = "Draw Question (SVG)"
-    $("svgMenuA").style.display = "none"
+    event.target.value = "draw"
+    $("answerCanvas").style.display = "none"
   }
-  
 })
+//-------------------------------------------------------------------------------------------------------------
 
-$("svgFileInput").addEventListener("change", function(event){
-  fileReader.readAsText(event.target.files[0])
-  fileReader.addEventListener("load", function(event){
-    contributeForm["questionInput"].innerHTML = event.target.result
-  })
-})
-
-
-$("svgFileInputA").addEventListener("change", function(event){
-  fileReader.readAsText(event.target.files[0])
-  fileReader.addEventListener("load", function(event){
-    contributeForm["answerInput"].innerHTML = event.target.result
-  })
-})
+//-------------------OLD SVG FILE READING SYSTEM-----------------------
+//fileReader = new FileReader();
+// $("svgFileInput").addEventListener("change", function(event){
+//   fileReader.readAsText(event.target.files[0])
+//   fileReader.addEventListener("load", function(event){
+//     contributeForm["questionInput"].innerHTML = event.target.result
+//   })
+// })
+// $("svgFileInputA").addEventListener("change", function(event){
+//   fileReader.readAsText(event.target.files[0])
+//   fileReader.addEventListener("load", function(event){
+//     contributeForm["answerInput"].innerHTML = event.target.result
+//   })
+// })
+//---------------------------------------------------------------------
 
 
 
@@ -128,20 +153,16 @@ contributeForm.addEventListener('submit', (e)=>{
     $('contributeButton').style.display = "none";
     console.log("Form_Submitted")
     console.log("Form submitted by "+contributeForm['contributer'].value)
-
-    if(($("createSvgButt").value == "Type Question") || ($("createSvgButtA").value == "Type Question")){
-      nQuestionData = contributeForm['questionInput'].value
-      nAnswerData = contributeForm['answerInput'].value
-    } else {
-      nQuestionData = contributeForm['questionInput'].value.replaceAll("\n", "</br>")
-      nAnswerData = contributeForm['answerInput'].value.replaceAll("\n", "</br>")
-    }
+    
+    if(lcQ != undefined){questionSVGstring = "<br>"+ lcQ.getSVGString()}else{questionSVGstring = ""}
+    if(lcA != undefined){answerSVGstring = "<br>"+ lcA.getSVGString()}else{answerSVGstring = ""}
+    
 
     database.ref(`questions/${contributeForm['subject'].value}/${contributeForm['unit'].value}/${Math.round(Math.random()*100000000)}`).set({
       difficulty: contributeForm['difficulty'].value,
       contributer: contributeForm['contributer'].value,
-      question: nQuestionData,
-      answer: nAnswerData,
+      question: nQuestionData = contributeForm['questionInput'].value.replaceAll("\n", "</br>") + questionSVGstring,
+      answer: nAnswerData = contributeForm['answerInput'].value.replaceAll("\n", "</br>")+ answerSVGstring,
       //workingOut: contributeForm['workingOutInput'].value.replaceAll().replaceAll("\n", "</br>"),
       tech: contributeForm['tech'].value,
       topic: contributeForm["topic"].value
