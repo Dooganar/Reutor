@@ -6,6 +6,10 @@ contributeForm = document.querySelector("#newQstnForm")
 var lcQ, lcA
 $("createSvgButt").addEventListener("click", function(event){
   if(event.target.value == "draw"){
+    var allContent = document.getElementsByClassName('pageContent');
+    for (var i = 0; i < allContent.length; i++) {
+      allContent[i].style.margin = '0% 2% 0% 2%'
+    }
     event.target.value = "-draw-"
     if($("questionCanvas")==undefined){
       qCanvas = document.createElement("div")
@@ -21,9 +25,14 @@ $("createSvgButt").addEventListener("click", function(event){
       $("questionCanvas").style.display = "inline"
     }
   }else{
+    var allContent = document.getElementsByClassName('pageContent');
+    for (var i = 0; i < allContent.length; i++) {
+      allContent[i].style.margin = '0% 20% 0% 20%'
+    }
     event.target.value = "draw"
     $("questionCanvas").style.display = "none"
   }
+
 })
 $("createSvgButtA").addEventListener("click", function(event){
   if(event.target.value == "draw"){

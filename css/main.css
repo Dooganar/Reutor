@@ -78,6 +78,11 @@ li img{
     height:100%;
 }
 
+li svg {
+    width:100%;
+    height:100%;
+}
+
 li.butt{
     cursor:pointer;
 }
