@@ -1,5 +1,7 @@
 contributeForm = document.querySelector("#newQstnForm")
 
+let date = new Date;
+console.log(date)
 
 
 //------------------------------------------DRAWING FUNCTIONALITY 2.0----------------------------------------------
@@ -170,13 +172,17 @@ contributeForm.addEventListener('submit', (e)=>{
     database.ref(`questions/${contributeForm['subject'].value}/${contributeForm['unit'].value}/${Math.round(Math.random()*100000000)}`).set({
       difficulty: contributeForm['difficulty'].value,
       contributer: contributeForm['contributer'].value,
-      question: nQuestionData = contributeForm['questionInput'].value.replaceAll("\n", "</br>") + questionSVGstring,
-      answer: nAnswerData = contributeForm['answerInput'].value.replaceAll("\n", "</br>")+ answerSVGstring,
+      question: contributeForm['questionInput'].value.replaceAll("\n", "</br>") + questionSVGstring,
+      answer: contributeForm['answerInput'].value.replaceAll("\n", "</br>")+ answerSVGstring,
       //workingOut: contributeForm['workingOutInput'].value.replaceAll().replaceAll("\n", "</br>"),
       tech: contributeForm['tech'].value,
-      topic: contributeForm["topic"].value
-    }).catch(error => {e.target.nextElementSibling.innerHTML = error.message; 
-      $('contributeButton').style.display = "initial";});
+      topic: contributeForm["topic"].value, 
+      dateSubmitted: date.toString(),
+      testt: "Heloooo"
+    }).catch(error => {e.target.nextElementSibling.innerHTML = error.message; $('contributeButton').style.display = "initial";});
+    console.log(new Date())
+
+    //-------------------------Add to topics list functionality:---------------------
     database.ref("topics/"+contributeForm["subject"].value+"/"+contributeForm["unit"].value).once("value", function(snapshot){
       pushTopic = true
       snapshot.forEach(function(child){
@@ -191,6 +197,7 @@ contributeForm.addEventListener('submit', (e)=>{
       }
     }).then(ref => window.location.href="./index.html").catch(error => {e.target.nextElementSibling.innerHTML = error.message; 
       $('contributeButton').style.display = "initial";})
+    //-------------------------------------------------------------------------------
 
 }
 })

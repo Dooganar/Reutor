@@ -63,7 +63,8 @@ li {
     border: solid rgb(206, 224, 255) 10px;
 
     margin-left: 10%;
-    margin-bottom: 5%;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
     margin-right: 10%;
 
     padding: 1% 1%;
@@ -81,6 +82,9 @@ li img{
 li svg {
     width:100%;
     height:100%;
+}
+svg{
+    width:80%
 }
 
 li.butt{
@@ -358,3 +362,57 @@ header > h1 {
 .options span:last-of-type {
     visibility: hidden;
 }
+
+
+
+/* STYLES FOR THE ATAR CALCULATOR */
+
+.markInput{
+    width:80%;
+}
+
+.outOfText{
+    color: green;
+    margin-left:0;
+    padding-left:0;
+}
+
+#bigTable{
+    text-align: center;
+}
+
+h3{
+    margin-top: 0%;
+}
+
+li.notAQuestion{
+    list-style-type: circle;
+    font-size: 100%;
+    background-color: transparent;
+    text-align: left;
+    color: purple;
+    border: none;
+
+    margin-left: 0%;
+    margin-bottom: 0%;
+    margin-right: 0%;
+
+    padding: 1% 1%;
+
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .pageContent.biggerWidth{
+        margin-left: 5%;
+        margin-right: 5%;
+    
+        padding: 1%;
+    }
+  }
+
+
+
+
+
+/* ------------------------------- */

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+    <head>
+        <title>Rutor</title>
+        <link href="./css/main.css" type="text/css" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    </head>
+    <header>
+        <!-- <span class="LISU"><p id="welcomeMessage"></p><p id="signup_button" class="navButton">LOGOUT</p></span> -->
+        <span class="LISU"><p id="welcomeMessage"></p><p id="signup_button" class="navButton">LOGIN/SIGNUP</p></span>
+        <span class="nav"><p><span class='navButton' id="homeButton" onclick="window.location.href='index.html'">HOME</span>  
+            This site was created by 
+            <a id="link" target="_blank" href="http://rooster202.github.io">Reuben</a>,
+            <a id="link" target="_blank" href="http://tranjamin.github.io">Ben</a> and 
+            <a id="link" target="_blank" href="http://nebrok.github.io">Korben</a>
+        </p></span>
+        <h1><span id="Logo"><span id="BigR">R</span>eutor</span></h1>
+        <br><br>
+    </header>
+    <body>
+        <div class="pageContent">
+            <p>Welcome to Reutor's <b>Atar Calculator</b> page. To get started just click the <i>Add Subject</i> button below, and if you can remember what your grades are just start typing them in! 
+                Some things to note:
+                <ul>
+                    <li class="notAQuestion">If you haven't received your grades yet for some of your assesment than don't worry, as long as you <b style="color:black">type in at least one grade for each subject</b> we will predict your other results!</li>
+                    <li class="notAQuestion">If you leave one (or two) of the internal assessments blank (IA1, IA2 or IA3), our algorithim will assume that this assessment was cut from your corriculum due to corona virus.</li>
+                    <li class="notAQuestion">If you already have an account here at Reutor (and you are logged in), <b>your progress will be saved every time you click the <i>calculate</i> button</b> so that you dont have to re-type your grades each time (so make sure you click <i>calculate</i> before you leave the page!).</li>
+                    <li class="notAQuestion">If you don't have an account, just click the button in the top right corner of the page to make one (it's free). You need an account to receive your ATAR prediction.</li>
+                </ul>
+                </p>
+        </div><br>
+        <div class="pageContent biggerWidth">
+            <h2 style="text-align: center;" ">Atar Calculator</h2>
+            <br>
+
+            <form id = "AC_form">
+                <table id = "bigTable">
+                    <tr>
+                        <th></th>
+                        <th colspan="8">Units 1 and 2</th>
+                        <th colspan="8">Units 3 and 4</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Subject</th>
+                        <th scope="col" colspan="2">IA1</th>
+                        <th scope="col" colspan="2">IA2</th>
+                        <th scope="col" colspan="2">IA3</th>
+                        <th scope="col" colspan="2">IA4</th>
+                        <th scope="col" colspan="2">IA1</th>
+                        <th scope="col" colspan="2">IA2</th>
+                        <th scope="col" colspan="2">IA3</th>
+                        <th scope="col" colspan="2">IA4</th>
+                    </tr>                 
+                </table>
+                <input type="button" value="Add Subject" id="addSubjectButt"></input>
+                <input type="button" value="Calculate" id="calculateButt"></input>
+            </form>
+
+        
+        
+        </div>
+
+        <div id="endOfContentDiv"></div>
+        
+
+
+        <!-- BENS LOG IN / SIGN UP FORM: -->
+        <div id="signup_form">
+            <p>Login</p>
+            <form>
+                <input type="text" placeholder="Username" name="usernameLI" required><br>
+                <input type="password" placeholder="Password" name="passwordLI" required><br>
+                <input type="submit" value="Login">
+            </form>
+            <span class="error"></span>
+            <span>or</span><br><p>Signup</p>
+            <form>
+                <input type="text" placeholder="Create Username" name="usernameSU" required><br>
+                <input type="password" placeholder="Create Password" name="passwordSU" required><br>
+                <input type="password" placeholder="Confirm Password" name="confirmSU" required><br>
+                <input type="submit" value="Signup">
+            </form>
+            <span class="error"></span>
+        </div>
+
+
+
+        <!-- -----------------------JAVASCRIPT------------------------- -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDDA6cL7gj05Qf82o5SvoOOP1mZck3UKp8",
+                authDomain: "rutor-1962a.firebaseapp.com",
+                databaseURL: "https://rutor-1962a.firebaseio.com",
+                projectId: "rutor-1962a",
+                storageBucket: "rutor-1962a.appspot.com",
+                messagingSenderId: "1097644424015",
+                appId: "1:1097644424015:web:295af3229b7d7801c7a33a",
+                measurementId: "G-H4T4CK6YN7"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            var database = firebase.database();
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+        </script>
+        <script src="./javascript/universal.js"></script>
+        <script src="./javascript/atar_calculator.js"></script>
+    </body>
+
+
+</html>
