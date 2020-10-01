@@ -5,19 +5,19 @@ $ = ele => {return document.getElementById(ele)}
 subjectsDict = {
     "English": [25, 25, 25, 25], 
     "Maths Methods": [20, 15, 15, 50], 
-    //"General Maths": 0,
+    "General Maths": [20, 15, 15, 50],
     "Specialist Maths": [20, 15, 15, 50],
     "Physics": [10, 20, 20, 50],
     "Chemistry": [10, 20, 20, 50], 
-    //"Biology": 0,
-    //"Buisness": 0,
-    //"Legal": 0,
-    //"Drama": 0,
-    //"PE": 0,
-    //"Legal": 0,
+    "Biology": [10, 20, 20, 50],
+    "Business/Economics": [25, 25, 25, 25],
+    "Legal": [25, 25, 25, 25],
+    "Drama/Dance": [20, 20, 35, 25],
+    "Music": [20, 20, 35, 25],
+    "PE": [25, 20, 30, 25],
     "Engineering": [25, 25, 25, 25],
-    //"IT": 0,
-    //"Music": 0
+    "Digital Solutions": [20, 30, 25, 25],
+    "*Language*": [15, 30, 30, 25]
 }
 
 auth.onAuthStateChanged(user => {
