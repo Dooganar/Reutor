@@ -262,7 +262,7 @@ addSubjectRow = function(user, info, subName){
         }else{
             nSlash = document.createElement("p")
             nSlash.innerHTML = "/"
-            nSlash.style.display = "inline"
+            nSlash.classList.add("outOfText")
 
             nInput = document.createElement("p")
             nInput.classList.add("outOfText")
@@ -272,7 +272,6 @@ addSubjectRow = function(user, info, subName){
             }else{
                 nInput.innerHTML = subjectsDict["English"][(((i)/2-1) % 4)] 
             }
-            nInput.style.display = "inline"
             // nInput = document.createElement("input") // Old input system
             // nInput.classList.add("markInput") //old input sytem
             // nInput.value = subjectsDict["English"][((i/2-1) % 4)] //old input system
