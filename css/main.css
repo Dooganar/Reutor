@@ -372,6 +372,7 @@ header > h1 {
 }
 
 .outOfText{
+    display:inline;
     color: green;
     margin-left:0;
     padding-left:0;
@@ -457,6 +458,9 @@ li.notAQuestion{
     input, select{
         font-size: 100%;
     }
+    select{
+        width: 200px;
+    }
     input[type='checkbox'] {
         -webkit-appearance:none;
         width:40px;
@@ -483,7 +487,9 @@ li.notAQuestion{
         cursor: pointer;
         font-size: 3em;
     }
-    
+    .outOfText{
+        display: none;
+    }
 
 }
 
